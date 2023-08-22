@@ -1,8 +1,13 @@
 ---
 title: "Determining the presence of microplastics in juvenile rockfish gathered from the rhinoceros auklet from around the Farallon Island"
 author: "Laila SanAhmadi"
+date: "August 21, 2023"
 format: docx
 editor: visual
 ---
 
-\<a href="https://github.com/Lsanahmadi"\>GitHub\</a\>
+*GitHub Link*
+
+[GitHub Repository for Bio708](https://www.github.com/Lsanahmadi/Bio708/tree/main)
+
+# **Introduction**
