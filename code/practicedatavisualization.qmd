@@ -37,14 +37,31 @@ mass <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-tra
 #pick visualization, set of geoms, coordinates, and plot it
 
 #make some plots
-ggplot(ca) +geom_point(aes(x=year,y=visitors))
+ggplot(ca) +geom_point(aes(x=year,y=visitors, color=park_name)) +
+  labs(y="visitation", title="National Park Visitors") +
+  theme_linedraw() +
+  theme(legend.title=element_blank())
 
-```
+##create new plot for SE showin scaterplot of number of visitors grouped by state
+ggplot(se) +geom_point(aes(x=year, y=visitors, color=state)) +
+  labs(y='visitation', title='Southeast United States National Park Visitors') +
+  theme(axis.text.x=element_text(angle=45, size=12, color="purple"))
 
-``` r
-{r}
-library("here")
+##make boxplot with SE parks
+ggplot(se) +geom_boxplot(aes(x=park_name, y=visitors)) +
+  theme(axis.text.x=element_text(size=3))
+
+## organize by facets (states) in each graph -> split one plot into multiple based on data
+#use scales 
+
+ggplot(se) +geom_point(aes(x=year, y=visitors, color=state)) +
+  facet_wrap(~state, scales="free") +
+  xlim(c(1975,1990))
 
 
-
+#show a line for visitors at se parks over time
+ggplot(se) +geom_line(aes(x=year, y=visitors, color=park_name)) +
+  geom_point(aes(x=year, y=visitors, color=park_name)) +
+  geom_smooth(aes(x=year, y=visitors, color=park_name)) 
+  
 ```
