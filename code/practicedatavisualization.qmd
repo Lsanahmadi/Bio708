@@ -1,0 +1,50 @@
+---
+title: "Bio708-data-visualization"
+format: html
+editor: visual
+---
+
+## Practicing Data Visualization
+
+```{r}
+#load packages up here
+install.packages("here")
+library(here)
+
+#chapter 5 in workshop begin
+install.packages('tidyverse')
+library(tidyverse)
+
+#now using workshop data with provided link
+#load Nat Park Data from workshop below
+
+#National Parks in California
+ca <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/ca.csv") 
+
+#Acadia National Park
+acadia <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/acadia.csv")
+
+#Southeast US National Parks
+se <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/se.csv")
+
+#2016 Visitation for all Pacific West National Parks
+visit_16 <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/visit_16.csv")
+
+#All Nationally designated sites in Massachusetts
+mass <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/mass.csv")
+
+#now ggplot2 to help visualize data
+#pick visualization, set of geoms, coordinates, and plot it
+
+#make some plots
+ggplot(ca) +geom_point(aes(x=year,y=visitors))
+
+```
+
+``` r
+{r}
+library("here")
+
+
+
+```

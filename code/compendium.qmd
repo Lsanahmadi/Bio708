@@ -4,6 +4,7 @@ author: "Laila SanAhmadi"
 date: "August 21, 2023"
 format: docx
 editor: visual
+bibliography: references.bib
 ---
 
 *GitHub Link*
@@ -13,3 +14,7 @@ editor: visual
 # **Introduction**
 
 Anthropogenic pollution, like plastic, has been found to greatly impact seabirds directly through entanglement and suffocation as well as indirectly by creating additional stressors for habitat and prey. Through trophic and intergenerational transfer, the presence of plastic pollution poses a threat to the wellbeing of seabirds. For my research, I will be examining the presence of microplastics found within prey items gathered in a long-term diet survey of the rhinoceros auklet (RHAU) from the Gulf of the Farallones. Samples for this diet survey have been and will be collected during the RHAU's breeding season on the Southeast Farallon Islands. When the parent auklet returns back to its burrow with prey, the bird is collected via netting and the prey items are collected to help understand the prey species distribution. After identifying the rockfish species, each rockfish will be processed by taking morphometrics and removing the gastrointestinal tract and stomach for dissection. The removed organs will then be analyzed using epifluorescent microscopy to help quantify plastic items. Due to the role rockfish play in the ecosystem as both predator and prey, analyzing the presence of plastics in juvenile rockfish is vital to better understanding the flow of plastics in the food web and the potential impact on all trophic levels. While this study is looking at juvenile rockfish caught by the rhinoceros auklet, rockfish are also an important prey item for other seabirds, marine mammals, and fishes.
+
+[@bessa2018; @karami2017]
+
+@abbasi2018
