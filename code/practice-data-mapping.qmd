@@ -1,0 +1,94 @@
+---
+title: "Data Mapping"
+format: docx
+editor: visual
+---
+
+## Data Mapping
+
+```{r}
+#install packages
+library(tidyverse)
+
+#enter raw data file
+gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
+
+#visualize and play with data
+head(gapminder) #first 6 rows
+tail(gapminder) #last 6 rows
+str(gapminder) #str=structure: tells you the different parameters
+nrow(gapminder) #number of rows
+names(gapminder) #names of parameters
+gapminder$continent
+unique(gapminder$continent)
+
+
+filter(gapminder, lifeExp<29)
+filter(gapminder, country=='Mexico')
+filter(gapminder, country %in% c('Mexico', "Peru"))
+
+#rename line with <- #whatever is on the left gets the value of the right
+PeruMex<-filter(gapminder, country %in% c('Mexico', "Peru"))
+
+filter(gapminder, country=="Mexico", year==2002)
+
+#mean life expectancy in Brazil between 1987-2007
+
+Brazil<-filter(gapminder, country=="Brazil", year>1987, year<2007)
+mean(Brazil$lifeExp)
+
+#SELECT()
+#without one variable
+select(gapminder, -year)
+
+#cambodia and remove lifeexp and continent
+
+gap_cambodia<-filter(gapminder, country=='Cambodia')
+Cambodia2<-select(gap_cambodia, -continent, -lifeExp)
+
+#streamline using pipe %>% 
+#takes left of pipe and puts its into right 
+#"and then"
+#take gapminder and then look at head only
+
+gapminder %>% head()
+
+#run previous through pipe
+#name<-dataframe pipe filterfunction pipe selectfunction
+gap_cambodia<-gapminder %>% filter(country=="Cambodia") %>% select(-continent, -lifeExp)
+gap_cambodia
+
+#mutate
+
+gapminder %>% mutate(gdp=pop*gdpPercap)
+
+#calc pop in thousands for all Asian countries in teh year 2007 and add it as new column
+
+Asia2007<-gapminder %>% filter(continent=='Asia', year==2007)  %>% mutate(popThousands=pop/1000)
+Asia2007
+
+#group_by can create new column to group everyone with
+#population number per continent
+#summarize uses all values grouped by continent - all of Asia gathered together
+#mutate doesnt summarize by continent it just creates another value
+ContPop<-gapminder %>% filter(year==2002) %>% group_by(continent) %>% summarize(cont_pop=sum(pop)) %>% ungroup()
+ContPop
+# use View(ContPop) to view just the table in another tab
+
+#gapminder group by cont and year and add new variable that summarizes pop by cont and year
+
+ContPop<-gapminder %>% group_by(continent, year) %>% summarize(cont_pop = sum(pop)) %>% arrange(year)
+ContPop
+
+#max gdp per Continent
+
+Maxgdp<-gapminder %>% mutate(gdp=pop*gdpPercap) %>% group_by(continent) %>% mutate(max_gdp = max(gdp)) %>% filter(gdp == max_gdp)
+Maxgdp
+
+#max life exp in asia
+AsiaLE<- gapminder %>% filter(continent=='Asia') %>%group_by(year) %>% summarize(lifeExp) %>% arrange(-year)
+AsiaLE
+```
+
+```{Maxgdp}
+```

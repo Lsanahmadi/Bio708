@@ -1,0 +1,33 @@
+---
+title: "Rockfish Figures"
+format: docx
+editor: visual
+---
+
+```{r}
+#library
+library(tidyverse)
+library(ggplot2)
+#data
+RHAUdiets<-readr::read_csv('https://raw.githubusercontent.com/Lsanahmadi/Bio708/main/data/prboSefiDiet_e07b_a098_2843.csv')
+
+RHAUdiets
+Percentage<-RHAUdiets$RHAU_Rockfish
+
+RHAUdiets %>% 
+  ggplot(aes(year,y=Percentage,fill=Percentage))+geom_col(position = "stack", stat="identify")+labs(x="Year", y="Percentage", title="Percentage of the Rhinoceros Auklet Diet Consisting of Rockfish", caption = str_wrap("Figure 1: The percentage of the Rhinoceros Auklet diet consisting of rockfish from the Farallon Islands from the years 1987 to 2004 collected by Point Reyes Bird Observatory.")) +coord_flip() 
+
+```
+
+```{r}
+library(tidyverse)
+Rockfish<-readr::read_csv("https://raw.githubusercontent.com/Lsanahmadi/Bio708/5ba01b02f2bb770e9d9262cdab504be925e2f93f/data/FED_Rockfish_Catch_c8e8_8677_67a8.csv")
+Rockfish 
+
+colnames(Rockfish)
+
+bb<-filter(Rockfish, sci_name %in% c("Sebastes paucispinis","Sebastes flavidus","Sebastes dallii","Sebastes ruberrimus"))
+bb
+Rockfish <-bb$common_name
+ggplot(bb)+geom_point(aes(x=maturity, y=haul_no, color=Rockfish))+labs(x="Age Class", y='Haul Number', title='Age Classes of Rockfish Caught in First Fifty Hauls',caption = str_wrap("Figure 2: Age classes of four rockfish species caught in the first fifty Rockfish Recruitment Survey trawls in the Gulf of the Farallones by NOAA.")) + facet_wrap(~common_name, scales="free")+ylim(c(1,50))
+```
